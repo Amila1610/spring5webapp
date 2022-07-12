@@ -36,31 +36,31 @@ public class BootStrapData implements CommandLineRunner {
 
         System.out.println("Publisher Count: " + publisherRepository.count());
 
-        Author eric = new Author("Eric", "Evans");
-        Book ddd = new Book("Domain Driven Design", "123123");
-        eric.getBooks().add(ddd);
-        ddd.getAuthors().add(eric);
+        Author eric = new Author("Eric", "Evans");//1
+        Book ddd = new Book("Domain Driven Design", "123123");//1
+        eric.getBooks().add(ddd);//1
+        ddd.getAuthors().add(eric);//1
 
-        ddd.setPublisher(publisher);
-        publisher.getBooks().add(ddd);
+        ddd.setPublisher(publisher);//2
+        publisher.getBooks().add(ddd);//2
 
-        authorRepository.save(eric);
-        bookRepository.save(ddd);
-        publisherRepository.save(publisher);
+        authorRepository.save(eric);//1
+        bookRepository.save(ddd);//1
+        publisherRepository.save(publisher);//2
 
-        Author rod = new Author("Rod", "Johnson");
-        Book noEJB = new Book("J2EE Development without EJB", "3939459459");
-        rod.getBooks().add(noEJB);
-        noEJB.getAuthors().add(rod);
+        Author rod = new Author("Rod", "Johnson");//1
+        Book noEJB = new Book("J2EE Development without EJB", "3939459459");//1
+        rod.getBooks().add(noEJB);//1
+        noEJB.getAuthors().add(rod);//1
 
-        noEJB.setPublisher(publisher);
-        publisher.getBooks().add(noEJB);
+        noEJB.setPublisher(publisher);//2
+        publisher.getBooks().add(noEJB);//2
 
         authorRepository.save(rod);
         bookRepository.save(noEJB);
-        publisherRepository.save(publisher);
+        publisherRepository.save(publisher);//2
 
-        System.out.println("Number of Books: " + bookRepository.count());
-        System.out.println("Publisher Number of Books: " + publisher.getBooks().size());
+        System.out.println("Number of Books: " + bookRepository.count());//1
+        System.out.println("Publisher Number of Books: " + publisher.getBooks().size());//2
     }
 }
